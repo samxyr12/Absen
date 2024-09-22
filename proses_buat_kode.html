@@ -1,0 +1,19 @@
+<?php
+include 'db.php';
+
+function generateKode() {
+    return rand(10000, 99999);
+}
+
+$kode = generateKode();
+
+$sql = "INSERT INTO kode_acak (kode) VALUES ('$kode')";
+
+if ($conn->query($sql) === TRUE) {
+    echo "Kode acak berhasil dibuat: $kode";
+} else {
+    echo "Error: " . $sql . "<br>" . $conn->error;
+}
+
+$conn->close();
+?>
